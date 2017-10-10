@@ -109,60 +109,6 @@ void OLED_DISPLAY::begin(uint8_t vccstate, uint8_t i2caddr, bool reset) {
 		// Sequnce 2. "After VDD Becomes stable, set RES# Pin LOW for 3us then HIGH)
 		digitalWrite(rst, HIGH);
 
-		// Turn on VCC (Init Sequence)
-//		writeCommand(OLED_DISPLAY_OFF);
-//		writeCommand(OLED_SET_DISPLAYCLOCK_DIV);
-//		writeCommand(0x80); // Suggested Ratio
-//
-//		// set our multiplex ratio to N-1
-//		writeCommand(OLED_SET_MULTIPLEX);
-//		writeCommand(OLED_LCDHEIGHT-1);
-//
-//		writeCommand(OLED_DISPLAY_OFFSET);
-//		writeCommand(0x0); // No offset
-//
-//		writeCommand(OLED_STARTLINE | 0x0); //line 0
-//		writeCommand(OLED_CHARGE_PUMP);
-//
-//		if (vccstate == OLED_EXTERNALVCC) {
-//			writeCommand(0x10);
-//		} else {
-//			writeCommand(0x14); // Enable charge pump
-//		}
-//
-//		writeCommand(OLED_MEM_MODE);
-//		writeCommand(0x00);
-//
-//		writeCommand(OLED_SEG_REMAP | 0x1);
-//		writeCommand(OLED_COM_SCAN_DEC);
-//
-//		writeCommand(OLED_SET_COM_PINS);
-//		writeCommand(0x12);
-//
-//		writeCommand(OLED_SET_CONTRAST);
-//		if (vccstate == OLED_EXTERNALVCC) {
-//			writeCommand(0x9F);
-//		} else {
-//			writeCommand(0xCF);
-//		}
-//
-//		writeCommand(OLED_SET_PRECHARGE);
-//		if (vccstate == OLED_EXTERNALVCC) {
-//			writeCommand(0x22);
-//		} else {
-//			writeCommand(0xF1);
-//		}
-//
-//		writeCommand(OLED_SET_V_COM_DETECT);
-//		writeCommand(0x40);
-//
-//		writeCommand(OLED_DISPLAY_ALL_ON_RESUME);
-//		writeCommand(OLED_NORMALDISPLAY);
-//
-//		writeCommand(OLED_DEACTIVATE_SCROLL);
-//
-//		writeCommand(OLED_DISPLAY_ON);
-
 		// Inital command
 		writeCommand(OLED_DISPLAY_OFF);
 
@@ -206,13 +152,7 @@ void OLED_DISPLAY::begin(uint8_t vccstate, uint8_t i2caddr, bool reset) {
 		writeCommand(OLED_CHARGE_PUMP);				// 0x8D
 		writeCommand(0x14);							// enable charge pump
 
-//		//writeCommand(OLED_SET_PRECHARGE);
-//		writeCommand(0xF1);
-//
-//		writeCommand(OLED_SET_V_COM_DETECT);
-//		writeCommand(0x40);
-
-//		// Set memory addressing mode
+		// Set memory addressing mode
 		writeCommand(OLED_MEM_MODE);				// 0x20
 		writeCommand(0x00);						// Horizontal Addressing Mode
 
