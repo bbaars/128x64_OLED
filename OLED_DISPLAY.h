@@ -69,6 +69,14 @@
 #define OLED_VERT_RIGHT_HORIZ_SCROLL	0x29 // Vertical and right horizontal scroll
 #define OLED_VERT_LEFT_HORIZ_SCROLL	0x2A	 // Vertical and left horizontal scroll
 
+enum COLOR {
+
+	WHITE = 0,
+	BLACK = 1,
+	INVERSE = 2
+
+};
+
 
 class OLED_DISPLAY {
 
@@ -77,13 +85,17 @@ public:
 	// constructor
 	OLED_DISPLAY(int8_t RESET = -1);
 
-	void begin(uint8_t vccstate = OLED_SWITCHCAPVCC, uint8_t i2caddr = I2C_ADDR, bool reset = true);
+	void init(uint8_t vccstate = OLED_SWITCHCAPVCC, uint8_t i2caddr = I2C_ADDR, bool reset = true);
 	void writeCommand(uint8_t command);
 	void display(void);
 	void clearDisplay(void);
+	void drawPixel(int16_t x, int16_t y, COLOR color);
+	uint8_t width();
+	uint8_t height();
 
 private:
-	int8_t _i2cAddr, _vccState, sid, sclk, dc, rst, cs;
+	int8_t _i2cAddr, _vccState, rst;
+
 
 };
 

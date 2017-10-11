@@ -9,11 +9,18 @@ void setup() {
 
 	Serial.begin(9600);
 
-	display.begin(OLED_SWITCHCAPVCC, 0x3C);
+	display.init(OLED_SWITCHCAPVCC, 0x3C);
 	display.display();
 	delay(5000);
-
-	Serial.print("Done");
+	display.clearDisplay();
+	display.drawPixel(64, 1, COLOR::WHITE);
+	display.display();
+	delay(1000);
+	display.drawPixel(64, 1, COLOR::BLACK);
+	display.display();
+	delay(1000);
+	display.drawPixel(64, 32, COLOR::INVERSE);
+	display.display();
 }
 
 
